@@ -38,8 +38,8 @@ $ vault read secret/training
 
 Expected output:
 
-Key                  vaule
----                  ---
+TBA TBA TBA
+
 
 Retrieve only the "username" value from secret/training
 
@@ -48,3 +48,14 @@ $ vault read -field=username secret/training
 Expected output:
 student01
 
+### Step 4 - List Secret Keys using CLI:
+
+List all the secret keys stored in the key/value secret backend
+
+$ vault list secret
+
+Expected output:
+
+TBA TBA TBA
+
+The output displays only the keys and not the vaules
