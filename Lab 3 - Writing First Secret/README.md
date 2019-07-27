@@ -1,82 +1,50 @@
-# Introduction:
+# Lab Module Introduction:
 
-The goal of this module is to showcase to students how easy it is to get up and running with a Vault HA Cluster backed by Consul in just a few commands.  We will be deploying this Vault cluster on AWS using Terraform.
+The goal of this lab module is to introduce students to the key/value secrets engine within HashiCorp Vault
 
 ## Estimated Time to Complete:
 
-30-45 Minutes
+20-25 Minutes
 
-## Solution:
+## Lab Solution:
 
-Provision a quick start Vault & Consul cluster in a private network with a bastion host.
+Provision a the key/vaule Vault secrets engine and configue secrets within the engine.
 
-## Prerequisites
+### Step 1:
 
-- [Download Terraform](https://www.terraform.io/downloads.html)
-- [Download AWS CLI] (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+Execute the following command to read secrets at the secret/training path:
 
-We will now provision the Terraform Quick Start Vault & Consul clusters.
+$ vault read secret/training
 
-### Step 1: Initialize
+Expected output:
 
-Initialize Terraform - download providers and modules.
+No Vaule found at secret/training
 
-#### CLI
+### Step 2:
 
-[`terraform init` Command](https://www.terraform.io/docs/commands/init.html)
+Write a secret into secret/training path:
 
-##### Request
+$ vault write secret/training username="studen01" password="p@$$w0rd"
 
-```sh
-$ terraform init
-```
+Expected output:
 
-##### Response
-```
-```
+Success! Data Written to: secret/training
 
-### Step 2: Plan
+### Step 3:
 
-Run a `terraform plan` to ensure Terraform will provision what you expect.
+Now, read the secrets in secret/training path:
 
-#### CLI
+$ vault read secret/training
 
-[`terraform plan` Command](https://www.terraform.io/docs/commands/plan.html)
+Expected output:
 
-##### Request
+Key                  vaule
+---                  ---
 
-```sh
-$ terraform plan
-```
+Retrieve only the "username" value from secret/training
 
-##### Response
-```
-```
+$ vault read -field=username secret/training
 
-### Step 3: Apply
-
-Run a `terraform apply` to provision the HashiStack. One provisioned, view the `zREADME` instructions output from Terraform for next steps.
-
-#### CLI
-
-[`terraform apply` command](https://www.terraform.io/docs/commands/apply.html)
-
-##### Request
-
-```sh
-$ terraform apply
-```
-
-##### Response
-```
-```
-
-## Reference Material
-
-- [Terraform Getting Started](https://www.terraform.io/intro/getting-started/install.html)
-- [Terraform Docs](https://www.terraform.io/docs/index.html)
-- [Consul Getting Started](https://www.consul.io/intro/getting-started/install.html)
-- [Consul Docs](https://www.consul.io/docs/index.html)
-- [Vault Getting Started](https://www.vaultproject.io/intro/getting-started/install.html)
-- [Vault Docs](https://www.vaultproject.io/docs/index.html)
+Expected output:
+student01
 
