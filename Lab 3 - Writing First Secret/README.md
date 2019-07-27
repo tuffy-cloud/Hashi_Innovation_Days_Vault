@@ -70,4 +70,8 @@ Try reading the secret/company path again:
 
 $ vault read secret/training
 
+
+
+
+
 ************ This concludes the end of this Lab Module ************
